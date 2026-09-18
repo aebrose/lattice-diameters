@@ -19,9 +19,9 @@ largest feasible s.
 The implementation requires SageMath. The integer linear programs are solved using SageMath’s PPL backend, which uses exact rational arithmetic.
 """
 
-from sage.all import Infinity
-from sage.numerical.mip import MixedIntegerLinearProgram, MIPSolverException
 from sage.all import Infinity, Polyhedron, QQ, matrix, vector
+from sage.numerical.mip import MixedIntegerLinearProgram, MIPSolverException
+
 
 
 # ==================================================

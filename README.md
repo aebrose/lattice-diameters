@@ -36,7 +36,7 @@ ld, ld_seg = lattice_diameter_2d(vertices)
 _, ld_segs_dir = lattice_diameter_2d_all_directions(vertices)
 
 print("Lattice diameter:", ld)
-print("A latticediameter segment:", ld_seg)
+print("A lattice diameter segment:", ld_seg)
 print("Lattice diameter segments, at least one for every lattice diameter direction:", ld_segs_dir)
 ```
 
@@ -52,7 +52,7 @@ b = vector(QQ, [2, 0, 2, 0, 2, 0])
 ld, ld_seg = lattice_diameter_ILP(A, b)
 
 print("Lattice diameter:", ld)
-print("A lattice-diameter segment:", ld_seg)
+print("A lattice diameter segment:", ld_seg)
 
 #Or, if the rational polytope is given by vertices:
 
@@ -61,7 +61,7 @@ vertices = [(0,0,0), (2,0,1), (0,QQ(3)/2,0), (0,0,QQ(5)/3)]
 ld, ld_seg = lattice_diameter_ILP_by_vertices(vertices)
 
 print("Lattice diameter:", ld)
-print("A lattice-diameter segment:", ld_seg)
+print("A lattice diameter segment:", ld_seg)
 ```
 
 Then run the file with SageMath:
