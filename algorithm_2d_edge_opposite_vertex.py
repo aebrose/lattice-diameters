@@ -249,13 +249,18 @@ def lattice_diameter_2d_all_directions(P_vertices):
             elif lattice_length == ld:
                 num_ld_at_v = 1
                 maybe_more = True
-                ld_segs.append((v, (v[0] + lattice_length * (w[0] - v[0]),
-                                    v[1] + lattice_length * (w[1] - v[1]))))
+                seg = (v, (v[0] + lattice_length * (w[0] - v[0]),
+                           v[1] + lattice_length * (w[1] - v[1])))
+                if seg not in ld_segs and seg[::-1] not in ld_segs:
+                    ld_segs.append(seg)
                 
             while maybe_more and num_ld_at_v < 3:
                 points = other_points_at_same_height(w, e.a, triangle_rows)
-                ld_segs.extend((v, (v[0] + lattice_length * (p[0] - v[0]),
-                                    v[1] + lattice_length * (p[1] - v[1]))) for p in points)
+                for p in points:
+                    seg = (v, (v[0] + lattice_length * (p[0] - v[0]),
+                               v[1] + lattice_length * (p[1] - v[1])))
+                    if seg not in ld_segs and seg[::-1] not in ld_segs:
+                        ld_segs.append(seg)
                 num_ld_at_v += len(points)
                 if aw + 1 <= e.offset and num_ld_at_v < 3:
                     rows = list(triangle_rows) + [halfspace_row(e.a, aw + 1)]
@@ -263,8 +268,10 @@ def lattice_diameter_2d_all_directions(P_vertices):
                     ll = int((e.offset - opp_value) // (aw - opp_value))
                     if ll == lattice_length:
                         num_ld_at_v += 1
-                        ld_segs.append((v, (v[0] + lattice_length * (w[0] - v[0]),
-                                            v[1] + lattice_length * (w[1] - v[1]))))
+                        seg = (v, (v[0] + lattice_length * (w[0] - v[0]),
+                                   v[1] + lattice_length * (w[1] - v[1])))
+                        if seg not in ld_segs and seg[::-1] not in ld_segs: #avoid duplicate segments
+                            ld_segs.append(seg)
                     else: break
                 else: break
     return ld, ld_segs
