@@ -183,7 +183,11 @@ def solve_ilp(rows, objective):
 # ==================================================
 
 def lattice_diameter_2d(P_vertices):
-    """ Returns one lattice diameter and a corresponding lattice diameter segment of P."""
+    """
+    Input: list of integral vectors defining the polygon. 
+    Returns: (ld, ld_seg)
+        where ld is the lattice diameter and ld_seg is a lattice diameter segment of P.
+    """
     P = LatticePolygon(P_vertices) #makes instance that precomputes edge-opposite vertices and useful notation
     ld = 0
     for e in P.edges():
@@ -216,7 +220,10 @@ def other_points_at_same_height(w, a, rows):
     return points
 
 def lattice_diameter_2d_all_directions(P_vertices):
-    """Returns the lattice diameter and at least one lattice diameter segment per lattice diameter direction (but possibly many lattice diameter segments for one direction). Any other lattice diameter segment is a translate of one of these.
+    """
+    Input: list of integral vectors defining the polygon P
+    Returns: (ld, ld_segs)
+        where ld is the lattice diameter of P, and ld_segs contains at least one lattice diameter segment per lattice diameter direction (but possibly more)
     """
     P = LatticePolygon(P_vertices)
     ld = 0
