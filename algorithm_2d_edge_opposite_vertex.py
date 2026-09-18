@@ -1,12 +1,11 @@
 """
 Algorithm to compute lattice diameter segments of lattice polygons and all lattice diameter directions by iterating through all edge-opposite vertex triangles. 
 
-Input: A finite list of integral vectors whose convex hull defines the lattice polygon.
-
 Functions:
-  * lattice_diameter_2d: 
+    Input: P_vertices is a finite list of integral vectors whose convex hull defines the lattice polygon.
+  * lattice_diameter_2d(P_vertices): 
         returns the lattice diameter and one lattice diameter segment.
-  * lattice_diameter_2d_all_directions:
+  * lattice_diameter_2d_all_directions(P_vertices):
         returns the lattice diameter, and at least one lattice diameter segment for every lattice diameter direction
 
 Algorithm:
@@ -216,10 +215,10 @@ def other_points_at_same_height(w, a, rows):
                 points.append(z)
     return points
 
-def lattice_diameter_2d_all_directions(P):
+def lattice_diameter_2d_all_directions(P_vertices):
     """Returns the lattice diameter and at least one lattice diameter segment per lattice diameter direction (but possibly many lattice diameter segments for one direction). Any other lattice diameter segment is a translate of one of these.
     """
-    P = LatticePolygon(P)
+    P = LatticePolygon(P_vertices)
     ld = 0
     ld_segs = []
 
