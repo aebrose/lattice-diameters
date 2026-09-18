@@ -5,6 +5,9 @@ Function:
   Input: A is a Sage matrix over QQ, and b is a Sage vector over QQ.
   * lattice_diameter_ILP(A, b):
     returns the lattice diameter and one lattice diameter segment, returns (-Infinity, None) if P has no lattice points, and raise ValueError if P contains lattice points but is unbounded.
+  
+  Alternatively, for a list of vertices run
+  * lattice_diameter_ILP_by_vertices(vertices)
 
 Algorithm:
 For fixed integer s, decide whether there are integer vectors x, y, u with 
@@ -18,6 +21,7 @@ The implementation requires SageMath. The integer linear programs are solved usi
 
 from sage.all import Infinity
 from sage.numerical.mip import MixedIntegerLinearProgram, MIPSolverException
+from sage.all import Infinity, Polyhedron, QQ, matrix, vector
 
 
 # ==================================================
@@ -124,6 +128,8 @@ def _check_unbounded(A):
 
 # ==================================================
 # MAIN
+# - lattice_diameter_ILP
+# - lattice_diameter_ILP_by_vertices
 # ==================================================
 
 def lattice_diameter_ILP(A, b):
@@ -173,3 +179,30 @@ def lattice_diameter_ILP(A, b):
 
     x, y, _ = best_solution
     return lower, (x, y)
+
+def lattice_diameter_ILP_by_vertices(vertices):
+    """
+    Input: vertices of a rational polytope.
+    Returns the lattice diameter and a lattice-diameter segment.
+
+    """
+    P = Polyhedron(vertices=vertices, base_ring=QQ)
+
+    inequalities = P.inequalities_list()
+    equations = P.equations_list()
+
+    rows = [[-coefficient for coefficient in inequality[1:]] for inequality in inequalities]
+    bounds = [inequality[0] for inequality in inequalities]
+
+    for equation in equations:
+        constant = equation[0]
+        coefficients = list(equation[1:])
+        rows.append(coefficients)
+        bounds.append(-constant)
+        rows.append([-coefficient for coefficient in coefficients])
+        bounds.append(constant)
+
+    A = matrix(QQ, rows)
+    b = vector(QQ, bounds)
+
+    return lattice_diameter_ILP(A, b)
