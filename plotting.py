@@ -71,12 +71,12 @@ def plot_lattice_diameter(ld_segs, vertices=None, A=None, b=None):
     picture = P.plot(
         point=False,
         line={"color": "black", "thickness": 1},
-        polygon={"color": "lightblue", "opacity": 0.35},
+        polygon={"color": "lightblue", "opacity": 0.25},
         frame=False
     )
     picture += point3d(lattice_points, color="gray", size=15, opacity=0.9)
     for i, s in enumerate(ld_segs):
         color = segment_colors[i % len(segment_colors)]
-        picture += line3d(s, color=color, thickness=2)
-        picture += point3d(lattice_points_on_segment(s), color=color, size=15)
+        picture += line3d(s, color=color, thickness=4)
+        picture += point3d(lattice_points_on_segment(s), color=color, size=50)
     return picture

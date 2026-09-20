@@ -1,6 +1,6 @@
 # lattice-diameters
 
-- `algorithm_2d_edge_opposite_vertex.py`: Code to compute the lattice diameter of a lattice polygon \(P\) and a lattice diameter segment for every lattice diameter direction of \(P\).
+- `algorithm_2d_edge_opposite_vertex.py`: Code to compute the lattice diameter of a lattice polygon P and a lattice diameter segment for every lattice diameter direction of P.
 
 - `algorithm_general_dimension.py`: Code to compute the lattice diameter of any rational polytope given either by inequalities with rational entries or by its vertices.
 
