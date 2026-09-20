@@ -15,7 +15,7 @@ The files are:
 
 - `plotting.py`: Code for plotting polytopes and their lattice diameter segments. Used in `examples.ipynb`.
 
-- `lattice_polygons_by_N.json`: JSON file enumerating lattice polygons with $N$ vertices for $3 \leq N \leq 15$, obtained from the Bohnert-Springer database. Used in `examples.ipynb` for a statistic of lattice diameter distributions.
+- `lattice_polygons_by_N.json`: JSON file enumerating lattice polygons with $N$ lattice points for $3 \leq N \leq 15$, obtained from the Bohnert-Springer database. Used in `examples.ipynb` for a statistic of lattice diameter distributions.
 
 - `examples.ipynb`: Demonstrates the algorithms on a lattice polygon and two three-dimensional rational/lattice polytopes. Computes a small statistic of the distribution of lattice diameters for lattice polygons with a fixed number of lattice points using the Bohnert-Springer database.
 
