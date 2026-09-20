@@ -1,18 +1,30 @@
-# lattice-diameters
+# Computing Lattice Diameters
+
+This repository contains code to compute the lattice diameter of a lattice polygon, and of rational polytopes, as described in our paper *On Lattice Diameter Segments: Algorithms and Structure* (https://doi.org/10.1007/978-3-032-28691-8_15) which is joint work with Gennadiy Averkov, Jesús De Loera, Gyivan Lopez-Campos and Antonio Torres.
+
+The lattice diameter of a polytope $P \subset \R^d$ is defined as
+$$\max_{x,y \in P \cap \mathbb{Z}^d}|[x,y] \cap \mathbb{Z}^d| -1,$$
+
+where $[x,y]$ denotes the segment between $x$ and $y$.
+
+The files are:
 
 - `algorithm_2d_edge_opposite_vertex.py`: Code to compute the lattice diameter of a lattice polygon P and a lattice diameter segment for every lattice diameter direction of P.
 
 - `algorithm_general_dimension.py`: Code to compute the lattice diameter of any rational polytope given either by inequalities with rational entries or by its vertices.
 
-- `plotting.py`: Code for plotting polytopes and their lattice diameter segments; used in `examples.ipynb`.
+- `plotting.py`: Code for plotting polytopes and their lattice diameter segments. Used in `examples.ipynb`.
 
-- `examples.ipynb`: Demonstrates the algorithms on a lattice polygon and a three-dimensional lattice polytope.
+- `lattice_polygons_by_N.json`: JSON file enumerating lattice polygons with $N$ vertices for $3 \leq N \leq 15$, obtained from the Bohnert-Springer database. Used in `examples.ipynb` for a statistic of lattice diameter distributions.
+
+- `examples.ipynb`: Demonstrates the algorithms on a lattice polygon and two three-dimensional rational/lattice polytopes. Computes a small statistic of the distribution of lattice diameters for lattice polygons with a fixed number of lattice points using the Bohnert-Springer database.
 
 ## Requirements
 
 This project requires [SageMath](https://doc.sagemath.org/html/en/installation/).
 
-## Installation
+
+## Example usage
 
 Clone the repository and enter its directory:
 
@@ -20,10 +32,6 @@ Clone the repository and enter its directory:
 git clone https://github.com/aebrose/lattice-diameters.git
 cd lattice-diameters
 ```
-
-Install SageMath according to its [installation guide](https://doc.sagemath.org/html/en/installation/).
-
-## Example usage
 
 Create a Python file in the `lattice-diameters` directory. For example, save the following as `my_example.py`:
 
