@@ -2,7 +2,7 @@
 
 This repository contains code to compute the lattice diameter of a lattice polygon, and of rational polytopes, as described in our paper *On Lattice Diameter Segments: Algorithms and Structure* (https://doi.org/10.1007/978-3-032-28691-8_15) which is joint work with Gennadiy Averkov, Jesús De Loera, Gyivan Lopez-Campos and Antonio Torres.
 
-The lattice diameter of a polytope $P \subset \R^d$ is defined as
+The lattice diameter of a polytope $P \subset \mathbb{R}^d$ is defined as
 $$\max_{x,y \in P \cap \mathbb{Z}^d}|[x,y] \cap \mathbb{Z}^d| -1,$$
 
 where $[x,y]$ denotes the segment between $x$ and $y$.
